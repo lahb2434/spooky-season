@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" 
+        content="width=device-width, 
+        initial-scale=1.0, 
+        user-scalable=no" />
+  <title>drag</title>
+  <style>
+    #container {
+      width: 100%;
+      height: 400px;
+      background-color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 7px;
+      touch-action: none;
+    }
+    #item {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(245, 230, 99);
+      border: 10px solid rgba(136, 136, 136, .5);
+      border-radius: 50%;
+      touch-action: none;
+      user-select: none;
+    }
+    #item:active {
+      background-color: rgba(168, 218, 220, 1.00);
+    }
+    #item:hover {
+      cursor: pointer;
+      border-width: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="outerContainer">
+    <div id="container">
+      <div id="item">
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    
+  </script>
+</body>
+
+</html>
+
+<!-- working code for moving selected element -->
+
+    let h1 = document.createElement('h1')
+    document.body.appendChild(h1)
+    h1.innerText = "ESDEATH"
+    let counter = 0;
+
+    h1.addEventListener('click', () => { let img = document.createElement('img')
+    img.src="https://static.wikia.nocookie.net/villains/images/9/97/TheEsdeath.png/revision/latest/scale-to-width-down/991?cb=20181205150807" 
+    img.style = "width: 250px; height: 200px; position: absolute"
+    img.id = `esdeath_${counter}`
+    counter += 1;
+    document.body.appendChild(img)})
+
+    let dragItem;
+    let active = false;
+    let currentX;
+    let currentY;
+    let initialX;
+    let initialY;
+    let xOffset = 0;
+    let yOffset = 0;
+    
+    //cardDiv.addEventListener('mousedown', (e) => (dragItem = document.getElementById(e.target.id)))
+    document.addEventListener("mousedown", dragStart, false);
+    document.addEventListener("mouseup", dragEnd, false);
+    document.addEventListener("mousemove", drag, false);
+    
+    function dragStart(e) {
+      <!-- until card div --> 
+      dragItem = document.getElementById(e.target.id)
+      <!-- --> 
+      active = true;
+      initialX = dragItem.offsetLeft - e.clientX;
+      initialY = dragItem.offsetTop - e.clientY;
+    }
+    
+    function drag(e) {
+        if (active) {
+          e.preventDefault();
+          
+          currentX = e.clientX + initialX;
+          currentY = e.clientY + initialY;
+          dragItem.style.left = (currentX) + 'px';
+          dragItem.style.top  = (currentY) + 'px';
+        }
+      }
+    
+    function dragEnd(e) {
+      active = false;
+    }
+    
+    function getOffset(el) {
+        const rect = el.getBoundingClientRect();
+        return {
+          left: rect.left + window.scrollX,
+          top: rect.top + window.scrollY
+        };
+      }
+
+

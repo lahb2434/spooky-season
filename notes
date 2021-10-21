@@ -116,3 +116,6 @@
       }
 
 
+<!-- Error with postgres and Active record -->
+
+ActiveRecord::NoDatabaseError: connection to server on socket "/tmp/.s.PGSQL.5432" failed: FATAL:  database "spooky_season_development" does not exist

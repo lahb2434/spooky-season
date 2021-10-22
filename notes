@@ -119,3 +119,6 @@
 <!-- Error with postgres and Active record -->
 
 ActiveRecord::NoDatabaseError: connection to server on socket "/tmp/.s.PGSQL.5432" failed: FATAL:  database "spooky_season_development" does not exist
+
+<!-- join migration -->
+rails g migration CreatePosition name:string x_position:integer y_position:integer card:references element:references

@@ -1,6 +1,21 @@
 class CardsController < ApplicationController
-  def index
+  
+  def spooky_season
     cards = Card.all
     render json: cards
   end
-end
+
+  def create
+    card = Card.new(card_params)
+    if card.save
+      render json: card, status: :accepted
+    else
+      render json: {errors: card.errors.full_messages}, status: :unprocessible_entity
+    end
+  end
+
+  private
+
+  def card_params
+    params.require(:card).permit(:name)
+  end

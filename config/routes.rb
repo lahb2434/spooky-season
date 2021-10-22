@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  get 'cards/index'
-  resources :cards, only: [:index]
+  get 'spooky_season', to: 'cards#spooky_season'
+  # resources :cards, only: [:index]
 end

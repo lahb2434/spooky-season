@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_22_145233) do
+ActiveRecord::Schema.define(version: 2021_10_24_191122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 2021_10_22_145233) do
     t.bigint "element_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "x_offset"
+    t.integer "y_offset"
     t.index ["card_id"], name: "index_element_positions_on_card_id"
     t.index ["element_id"], name: "index_element_positions_on_element_id"
   end

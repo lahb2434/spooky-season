@@ -10,24 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_26_140221) do
+ActiveRecord::Schema.define(version: 2021_10_26_150857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "backgrounds", force: :cascade do |t|
     t.string "name"
-    t.bigint "card_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "image_url"
-    t.index ["card_id"], name: "index_backgrounds_on_card_id"
+  end
+
+  create_table "card_backgrounds", force: :cascade do |t|
+    t.bigint "card_id", null: false
+    t.bigint "background_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["background_id"], name: "index_card_backgrounds_on_background_id"
+    t.index ["card_id"], name: "index_card_backgrounds_on_card_id"
   end
 
   create_table "cards", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "cbs", force: :cascade do |t|
+    t.bigint "card_id", null: false
+    t.bigint "background_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["background_id"], name: "index_cbs_on_background_id"
+    t.index ["card_id"], name: "index_cbs_on_card_id"
   end
 
   create_table "element_positions", force: :cascade do |t|
@@ -50,7 +66,10 @@ ActiveRecord::Schema.define(version: 2021_10_26_140221) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "backgrounds", "cards"
+  add_foreign_key "card_backgrounds", "backgrounds"
+  add_foreign_key "card_backgrounds", "cards"
+  add_foreign_key "cbs", "backgrounds"
+  add_foreign_key "cbs", "cards"
   add_foreign_key "element_positions", "cards"
   add_foreign_key "element_positions", "elements"
 end

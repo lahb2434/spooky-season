@@ -1,3 +1,4 @@
 class Background < ApplicationRecord
-  belongs_to :card
+  has_many :card_backgrounds
+#   has_many :cards, through: :card_backgrounds
 end

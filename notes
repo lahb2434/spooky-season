@@ -72,14 +72,28 @@ let h1 = document.createElement('h1')
     document.body.appendChild(h1)
     h1.innerText = "ESDEATH"
     let counter = 0;
+let cardDiv = document.createElement('div')
+
+cardDiv.style = "border: 5px solid black; width: 100%; height: 400px; background-color: #333; overflow: hidden; border-radius: 7px; touch-action: none;"
+
+document.body.appendChild(cardDiv)
 
     h1.addEventListener('click', () => { let img = document.createElement('img')
-    img.src="https://static.wikia.nocookie.net/villains/images/9/97/TheEsdeath.png/revision/latest/scale-to-width-down/991?cb=20181205150807" 
-    img.style = "width: 250px; height: 200px; position: absolute"
+//     img.src="https://static.wikia.nocookie.net/villains/images/9/97/TheEsdeath.png/revision/latest/scale-to-width-down/991?cb=20181205150807"
+img.src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c3db.png"
+    img.style = "width auto; height: 150px;"
     img.id = `esdeath_${counter}`
+    
+//     setTranslate(13,78,img)
+//
     counter += 1;
-    document.body.appendChild(img)
-    new CardElementsOffsets(img.id)
+    cardDiv.appendChild(img)
+    let getofst = img.getBoundingClientRect()
+    let ofst = solve(getofst.left, getofst.top)
+    setTranslate(ofst.x,ofst.y,img)
+    let cardElem = new CardElementsOffsets(img.id)
+    cardElem.Xoffset = ofst.x
+    cardElem.Yoffset = ofst.y
 })
 
     let dragItem;
@@ -93,14 +107,15 @@ let h1 = document.createElement('h1')
     let target;
     
     //cardDiv.addEventListener('mousedown', (e) => (dragItem = document.getElementById(e.target.id)))
-    document.addEventListener("mousedown", dragStart, false);
-    document.addEventListener("mouseup", dragEnd, false);
-    document.addEventListener("mousemove", drag, false);
+    cardDiv.addEventListener("mousedown", dragStart, false);
+    cardDiv.addEventListener("mouseup", dragEnd, false);
+    cardDiv.addEventListener("mousemove", drag, false);
     
     function dragStart(e) {
       <!-- until card div -->
       dragItem = document.getElementById(e.target.id)
       <!-- -->
+      dragItem.style.position = ''
       target = CardElementsOffsets.all.find(element => element.name === e.target.id)
       active = true;
       initialX = e.clientX - target.Xoffset;
@@ -123,7 +138,7 @@ let h1 = document.createElement('h1')
     }
 
     function setTranslate(xPos, yPos, el) {
-      el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
+      el.style.transform = "translate(" + xPos + "px, " + yPos + "px)";
     }
     
     function dragEnd(e) {
@@ -137,6 +152,12 @@ let h1 = document.createElement('h1')
           top: rect.top + window.scrollY
         };
       }
+
+function solve (xNum, yNum) {
+    let x = (13 - xNum)
+    let y = (78.109375 - yNum)
+    return {x: x, y: y}
+}
 
 
 <!-- Error with postgres and Active record -->

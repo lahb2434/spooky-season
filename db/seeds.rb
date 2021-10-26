@@ -34,4 +34,4 @@ catacombs: "https://assets.teenvogue.com/photos/5941558a1d23bb53d96d95e7/master/
 # create usable card elements
 elements.each{|key, value| Element.create(name: key, image_url: value)}
 
-backgrounds.each{|key, value| Element.create(name: key, image_url: value)} 
+backgrounds.each{|key, value| Background.create(name: key, image_url: value)} 

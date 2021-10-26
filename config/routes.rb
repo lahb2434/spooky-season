@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  resources :cards, only: [:index, :create]
+  resources :cards, :elements, :backgrounds, only: [:index, :create]
 end

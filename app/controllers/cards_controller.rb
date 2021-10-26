@@ -3,7 +3,7 @@ class CardsController < ApplicationController
   def index
     cards = Card.all
 
-    render json: cards.as_json(
+    render json: cards.as_json( :only => [:name],
       :include => { 
         :element_positions => { 
           :include => { 
@@ -11,7 +11,7 @@ class CardsController < ApplicationController
           },
         :only => [:x_position, :y_position]
         }
-      }
+      } 
     )
   end
 

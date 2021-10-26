@@ -5,7 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# Elements
 bat = "http://assets.stickpng.com/images/580b57fbd9996e24bc43bb3e.png"
+crow = "https://snipstock.com/assets/cdn/png/1d14bdcf3a02f3fa21e762c294910825.png"
 blood_splatter = "https://www.pngkit.com/png/detail/20-200208_blood-splatter-by-crazehpivotkid-on-clipart-library-transparent.png"
 michael_myers = "https://www.sideshow.com/storage/product-images/100398/michael-myers-deluxe_halloween_silo.png"
 pumpkin = "http://assets.stickpng.com/images/580b57fcd9996e24bc43c3db.png"
@@ -16,3 +19,14 @@ leatherface = "https://www.sideshow.com/storage/product-images/100399/leatherfac
 ghost_girl = "https://snipstock.com/assets/cdn/png/2943a4bab439a3542aefc8d1cc6c551b.png"
 full_moon = "https://snipstock.com/assets/cdn/png/ca380a688d046ae22386834857e034bd.png"
 black_spider = "http://assets.stickpng.com/images/580b57fbd9996e24bc43bc73.png"
+skull = "https://snipstock.com/assets/cdn/png/8b5863fb2ac93d4914856d9dc669590e.png"
+
+# background image
+haunted_house = "https://www.washingtonian.com/wp-content/uploads/2017/10/haunted-house-994x559.jpg"
+cemetery = "https://i.pinimg.com/originals/c7/1d/a6/c71da6ee5a9259bfad257fa43c1d4b28.jpg"
+catacombs = "https://assets.teenvogue.com/photos/5941558a1d23bb53d96d95e7/master/pass/catacombs.jpg"
+
+# happy halloween
+happy_halloween_banner_1 = "https://gallery.yopriceville.com/var/resizes/Free-Clipart-Pictures/Halloween-PNG-Pictures/Happy_Halloween_PNG_Clip_Art_Image-41255765.png?m=1537570551"
+happy_halloween_banner_2 = "https://gallery.yopriceville.com/var/resizes/Free-Clipart-Pictures/Halloween-PNG-Pictures/Bloody_Happy_Halloween_PNG_Clipart_Picture.png?m=1507172109"
+happy_halloween_banner_3 = "https://gallery.yopriceville.com/var/resizes/Free-Clipart-Pictures/Halloween-PNG-Pictures/Happy_Halloween_PNG_Clip_Art_Image.png?m=1533423107"

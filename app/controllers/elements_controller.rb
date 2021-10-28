@@ -3,7 +3,7 @@ class ElementsController < ApplicationController
     def index
       elements = Element.all
   
-      render json: elements.to_json(:only => [:name, :image_url])
+      render json: elements.to_json(:only => [:id, :name, :image_url])
     end
   
     def create

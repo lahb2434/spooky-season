@@ -3,7 +3,7 @@ class BackgroundsController < ApplicationController
     def index
       backgrounds = Background.all
   
-      render json: backgrounds.to_json(:only => [:name, :image_url])
+      render json: backgrounds.to_json(:only => [:id, :name, :image_url])
     end
   
     def create

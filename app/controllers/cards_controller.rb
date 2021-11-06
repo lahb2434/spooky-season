@@ -16,6 +16,8 @@ class CardsController < ApplicationController
   end
 
   def create
+    byebug
+    # mark = Element.all.detect{|x| x.name == card_params[:card_elements][0][:name].gsub(/[_\d]/, '')}
     card = Card.new(card_params)
     if card.save
       render json: card, status: :accepted
@@ -27,7 +29,8 @@ class CardsController < ApplicationController
   private
 
   def card_params
-    params.require(:card).permit(:name)
+    params.require(:card).permit(:name, :background, card_elements: [:name, :xOffset, :yOffset, :imageSize, :xPosition, :yPosition])
   end
 
 end
+

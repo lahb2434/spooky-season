@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_26_150857) do
+ActiveRecord::Schema.define(version: 2021_11_05_004416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,24 +37,17 @@ ActiveRecord::Schema.define(version: 2021_10_26_150857) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "cbs", force: :cascade do |t|
-    t.bigint "card_id", null: false
-    t.bigint "background_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["background_id"], name: "index_cbs_on_background_id"
-    t.index ["card_id"], name: "index_cbs_on_card_id"
-  end
-
   create_table "element_positions", force: :cascade do |t|
-    t.integer "x_position"
-    t.integer "y_position"
+    t.integer "xPosition"
+    t.integer "yPosition"
     t.bigint "card_id", null: false
     t.bigint "element_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "x_offset"
-    t.integer "y_offset"
+    t.integer "xOffset"
+    t.integer "yOffset"
+    t.integer "imageSize"
+    t.string "name"
     t.index ["card_id"], name: "index_element_positions_on_card_id"
     t.index ["element_id"], name: "index_element_positions_on_element_id"
   end
@@ -68,8 +61,6 @@ ActiveRecord::Schema.define(version: 2021_10_26_150857) do
 
   add_foreign_key "card_backgrounds", "backgrounds"
   add_foreign_key "card_backgrounds", "cards"
-  add_foreign_key "cbs", "backgrounds"
-  add_foreign_key "cbs", "cards"
   add_foreign_key "element_positions", "cards"
   add_foreign_key "element_positions", "elements"
 end

@@ -3,17 +3,20 @@ class CardsController < ApplicationController
   def index
     cards = Card.all
 
-    render json: cards.as_json( only: [:name],
-      include: { 
-        element_positions: { 
-          only: [:id, :xPosition, :yPosition, :xOffset, :yOffset, :element_id, :imageSize, :name ]
-        },
-        backgrounds: {
-          only: [:id, :name]
-        }
-      }
-    )
-  end
+    render json: cards.as_json( only: [:id, :name])
+    #   include: { 
+    #     element_positions: { 
+    #       only: [:element_id, :xPosition, :yPosition, :xOffset, :yOffset, :imageSize, :name]
+    #     },
+    #     elements: {
+    #       only: [:id, :image_url]
+    #     },
+    #     backgrounds: {
+    #       only: [:id, :name]
+    #     }
+    #   }
+    # )
+  end 
 
   def create
    
@@ -31,6 +34,25 @@ class CardsController < ApplicationController
     else
       render json: {errors: card.errors.full_messages}, status: :unprocessible_entity
     end
+  end
+
+  def show 
+    
+    card = Card.find(params[:id])
+
+    render json: card.as_json( only: [:id, :name],
+      include: { 
+        element_positions: { 
+          only: [:element_id, :image_url, :xPosition, :yPosition, :xOffset, :yOffset, :imageSize, :name]
+        },
+        elements: {
+          only: [:id, :image_url]
+        },
+        backgrounds: {
+          only: [:id, :name]
+        }
+      }
+    )
   end
 
   

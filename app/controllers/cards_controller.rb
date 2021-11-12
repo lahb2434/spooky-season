@@ -4,22 +4,9 @@ class CardsController < ApplicationController
     cards = Card.all
 
     render json: cards.as_json( only: [:id, :name])
-    #   include: { 
-    #     element_positions: { 
-    #       only: [:element_id, :xPosition, :yPosition, :xOffset, :yOffset, :imageSize, :name]
-    #     },
-    #     elements: {
-    #       only: [:id, :image_url]
-    #     },
-    #     backgrounds: {
-    #       only: [:id, :name]
-    #     }
-    #   }
-    # )
   end 
 
   def create
-   
     card = Card.new(name: card_params[:name])
     background = Background.find(card_params[:background])
     card.backgrounds = [background]

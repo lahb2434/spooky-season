@@ -1,24 +1,28 @@
-# README
+# spooky-season-backend
+Spooky Season Backend is a API and Database for the [Spooky Season Application](https://github.com/lahb2434/spooky_season_frontend), the database stores elements for use in the creation and saving of custom halloween cards.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby version - ruby '2.6.1'
+* dependencies - 'rails'
 
-Things you may want to cover:
+### Installation
 
-* Ruby version
+Run `$ bundle install` from your shell.
 
-* System dependencies
+### Database
 
-* Configuration
+Run `$ rails db:migrate` from shell to create database.
 
-* Database creation
+followed by `$ rails db:seed` from shell to create card elements.
 
-* Database initialization
+### Server
 
-* How to run the test suite
+Run `rails server` to start server.
 
-* Services (job queues, cache servers, search engines, etc.)
+### Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-* Deployment instructions
+### License
+[MIT](https://choosealicense.com/licenses/mit/)
 
-* ...
+
+
